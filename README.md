@@ -1,27 +1,34 @@
-# goodzheng-dev-wiki
+# goodzheng
 
-个人开发知识库，用于存储和沉淀自己在日常开发过程中编写的 Skill（技能）。
-
-## 仓库用途
-
-本仓库收录开发实践中总结出的可复用技能，包括但不限于：
-
-- **编码辅助类**：代码规范检查、重构、生成模板等 Skill
-- **工作流类**：构建、部署、提交等流程的自动化 Skill
-- **问题排查类**：常见 Bug 定位、日志分析等经验沉淀
+个人开发知识库。内容分两个区：**项目**（按项目归档的架构、链路与部署笔记）和**其他**（跨项目复用的 Skill 与排查经验）。
 
 ## 目录结构
 
 ```text
-goodzheng-dev-wiki/
-├── README.md                         # 仓库说明与 Skill 导航
-└── skills/                           # 每个 Skill 一个独立目录
-    ├── code-review-checklist/        # 编码辅助类（通用）
-    ├── error-troubleshooting/        # 问题排查类（通用）
-    ├── frontend-console-errors/      # 问题排查类（前端）
-    ├── backend-api-troubleshooting/  # 问题排查类（后端）
-    └── git-commit-helper/            # 工作流类（通用）
+goodzheng/
+├── README.md                    # 本站首页与导航
+├── 项目/
+│   └── 叮叮厨/                   # 菜谱内容平台 + AI 做菜助手
+│       ├── README.md            # 项目索引
+│       ├── 架构与模块.md
+│       ├── 云托管部署.md
+│       └── 小程序平台坑.md
+└── 其他/
+    └── skills/                  # 每个 Skill 一个独立目录
+        ├── code-review-checklist/
+        ├── error-troubleshooting/
+        ├── frontend-console-errors/
+        ├── backend-api-troubleshooting/
+        └── git-commit-helper/
 ```
+
+分区原则：只有属于某个具体项目的笔记进 `项目/<项目名>/`；能被任意项目复用的方法论进 `其他/`。同一篇文档不要两处放副本，需要交叉引用时用相对路径链接。
+
+## 项目
+
+| 项目 | 说明 | 索引 |
+| ---- | ---- | ---- |
+| 叮叮厨 | 菜谱内容平台 + AI 做菜助手；微信小程序、Expo App、管理后台三端，Spring Boot 与 FastAPI 双后端 | [项目/叮叮厨/README.md](项目/叮叮厨/README.md) |
 
 ## Skill 导航（渐进式查找）
 
@@ -44,7 +51,7 @@ goodzheng-dev-wiki/
 
 | 技术栈 | Skill | 说明 |
 | ------ | ----- | ---- |
-| 通用 | [git-commit-helper](skills/git-commit-helper/SKILL.md) | 分析 diff 生成 Conventional Commits 提交信息 |
+| 通用 | [git-commit-helper](其他/skills/git-commit-helper/SKILL.md) | 分析 diff 生成 Conventional Commits 提交信息 |
 | 前端 | （待添加） | |
 | 后端 | （待添加） | |
 
@@ -52,16 +59,16 @@ goodzheng-dev-wiki/
 
 | 技术栈 | Skill | 说明 |
 | ------ | ----- | ---- |
-| 通用 | [error-troubleshooting](skills/error-troubleshooting/SKILL.md) | 通用排查六步法，建议作为所有排查的入口 |
-| 前端 | [frontend-console-errors](skills/frontend-console-errors/SKILL.md) | 控制台报错、白屏、请求失败的分流定位 |
-| 后端 | [backend-api-troubleshooting](skills/backend-api-troubleshooting/SKILL.md) | 接口 5xx、响应慢、数据错误的分流定位 |
+| 通用 | [error-troubleshooting](其他/skills/error-troubleshooting/SKILL.md) | 通用排查六步法，建议作为所有排查的入口 |
+| 前端 | [frontend-console-errors](其他/skills/frontend-console-errors/SKILL.md) | 控制台报错、白屏、请求失败的分流定位 |
+| 后端 | [backend-api-troubleshooting](其他/skills/backend-api-troubleshooting/SKILL.md) | 接口 5xx、响应慢、数据错误的分流定位 |
 | 其他 | （待添加：数据库、运维、网络……） | |
 
 **编码辅助类**
 
 | 技术栈 | Skill | 说明 |
 | ------ | ----- | ---- |
-| 通用 | [code-review-checklist](skills/code-review-checklist/SKILL.md) | 按团队标准审查代码，输出分级反馈 |
+| 通用 | [code-review-checklist](其他/skills/code-review-checklist/SKILL.md) | 按团队标准审查代码，输出分级反馈 |
 | 前端 | （待添加） | |
 | 后端 | （待添加） | |
 
@@ -69,10 +76,11 @@ goodzheng-dev-wiki/
 
 ## 使用方式
 
-每个 Skill 以独立子目录存放在 `skills/` 下，目录内包含 `SKILL.md` 描述技能的用途、触发时机与执行步骤。使用时将对应目录复制或引用至开发工具（如 Qoder）的 Skill 配置中即可。
+Skill 以独立子目录存放在 `其他/skills/` 下，目录内的 `SKILL.md` 描述技能用途、触发时机与执行步骤；使用时把对应目录复制或引用到开发工具（如 Qoder）的 Skill 配置里。
 
 ## 维护说明
 
-- 新增 Skill 时按三步归位：在 `skills/` 下创建独立目录 → 判断问题类型（工作流 / 问题排查 / 编码辅助）→ 判断技术栈（通用 / 前端 / 后端 / 其他），挂到导航表对应位置
-- Skill 内容应描述清楚目标、适用场景与操作步骤；复杂流程优先写成「分流决策树 + 分支细则」的渐进式结构
+- 新增 Skill 时按三步归位：在 `其他/skills/` 下创建独立目录 → 判断问题类型（工作流 / 问题排查 / 编码辅助）→ 判断技术栈（通用 / 前端 / 后端 / 其他），挂到上方导航表
+- Skill 内容应写清目标、适用场景与操作步骤；复杂流程优先写成「分流决策树 + 分支细则」的渐进式结构
+- 新增项目时在 `项目/` 下建目录并补一份 `README.md` 索引，同时把这一行挂到上方「项目」表
 - 通用 Skill 与技术栈特化 Skill 之间用相对路径互相引用，避免重复维护相同内容
